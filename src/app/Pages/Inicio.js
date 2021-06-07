@@ -18,9 +18,6 @@ function Inicio () {
       <div>
         
           <Link to="/Log_in">Log in</Link>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/Log_in">
             <Log_in />

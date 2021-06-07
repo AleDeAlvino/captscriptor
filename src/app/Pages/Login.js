@@ -32,14 +32,14 @@ function Login() {
                 className="input-line full-width"
               ></input>
             </div>
-            <div class="spacing">
+            <div className="spacing">
               o entrar con <span className="highlight">Facebook</span>
             </div>
             <div>
-              <button class="ghost-round full-width">Iniciar sesión</button>
+              <button className="ghost-round full-width">Iniciar sesión</button>
             </div>
             <div>
-              <button class="ghost-round full-width2">
+              <button className="ghost-round full-width2">
                 Crear cuenta nueva
               </button>
             </div>
