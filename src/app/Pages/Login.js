@@ -20,7 +20,7 @@ function Login() {
     <div>
       <div className="bold-line"></div>
       <div className="cabeza">
-        <img src="logo.png" alt="logo"></img>
+        <img src="../../public/logo.jpeg" alt="logo"></img>
       </div>
       <div className="container">
         <div className="window">
