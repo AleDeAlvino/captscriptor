@@ -9,4 +9,27 @@ import {
     Link
   } from "react-router-dom";
 
-render(<Inicio/>, document.getElementById('Inicio'));
+  function Index () {
+
+  
+
+    return (
+      // <div>hola</div>
+      <Router>
+      <div>
+        <Switch>
+          <Route path="/Login">
+            <Login />
+          </Route>
+          <Route path="/">
+            <Inicio />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+    );
+  }
+
+
+
+render(<Index/>, document.getElementById('Inicio'));
