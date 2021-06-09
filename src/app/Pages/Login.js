@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from 'react-hook-form';
 // import ReactDOM from 'react-dom'
+import logo from '../../public/logo.jpg';
 
 
 
@@ -17,10 +18,10 @@ function Login() {
 
 
   return (
-    <div>
+    <div  className="cont_ru">
       <div className="bold-line"></div>
       <div className="cabeza">
-        <img src="../../public/logo.jpeg" alt="logo"></img>
+        <img src={logo}/>
       </div>
       <div className="container">
         <div className="window">
@@ -68,6 +69,7 @@ function Login() {
             </div>
           </div>
         </div>
+        <div className="barra_abajo">shbhj</div>
       </div>
     </div>
   );

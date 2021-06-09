@@ -19,7 +19,7 @@ function Sign_in() {
 
   return (
     <div>
-        <div className='bold-line'></div>
+        {/* <div className='bold-line'></div> */}
         <div className="cabeza">
             <img src={logo}/>
         </div>
@@ -66,6 +66,7 @@ function Sign_in() {
                     </form>
                 </div>
             </div>
+            <div className="barra_abajo">shbhj</div>
         </div>
     </div>
   );

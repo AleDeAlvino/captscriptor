@@ -15,7 +15,7 @@ import {
   
 
     return (
-      // <div>hola</div>
+      <div>
       <Router>
       <div>
         <Switch>
@@ -31,6 +31,7 @@ import {
         </Switch>
       </div>
     </Router>
+    </div>
     );
   }
 
