@@ -26,8 +26,14 @@ function Inicio () {
 
     return (
       // <div>hola</div>
+      <div>
+        <div>
         <Link to="/Login">Log in</Link>
-
+        </div>
+        <div>
+        <Link to="/Sign_in">Sign in</Link>
+        </div>
+      </div>
     );
   }
 

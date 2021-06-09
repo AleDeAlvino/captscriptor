@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { render } from 'react-dom';
 import Inicio from './Pages/Inicio';
 import Login from './Pages/Login';
+import Sign_in from './Pages/Sign_in';
 import {
     BrowserRouter as Router,
     Switch,
@@ -18,8 +19,11 @@ import {
       <Router>
       <div>
         <Switch>
-          <Route path="/Login">
+          <Route exact path="/Login">
             <Login />
+          </Route>
+          <Route exact path="/Sign_in">
+            <Sign_in />
           </Route>
           <Route path="/">
             <Inicio />
