@@ -14,7 +14,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 //routes
-app.use('/api/inicio', require('./routes/user.routes.js'));
+app.use('/user', require('./routes/user.routes.js'));
 
 
 //static files

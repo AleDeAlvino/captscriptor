@@ -14,6 +14,22 @@ function Sign_in() {
         console.log(data)
         e.target.reset()
         // ReactDOM.render(element, document.getElementById('root'))
+        fetch("/user/SignIn", {
+            method: "POST",
+            body: JSON.stringify({
+                name: data.name,
+                email: data.corr,
+                password: data.pass
+            }),
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("Hecho")
+          });
     }
 
 
