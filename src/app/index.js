@@ -25,9 +25,10 @@ import {
           <Route exact path="/Sign_in">
             <Sign_in />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <Inicio />
           </Route>
+          <Route render={() => <h1>Not found!</h1>} />
         </Switch>
       </div>
     </Router>

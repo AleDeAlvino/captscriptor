@@ -1,7 +1,12 @@
+/*Configuración del login y registro*/
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100,500);
 body,
 html {
   margin: 0;
   height: 100%;
+  background-color: #F7E5E1;
+  font-family: 'Trebuchet MS';
 }
 
 input {
@@ -62,7 +67,7 @@ button:focus {
   align-self: flex-end;
   font-size: 19px;
   font-size: 1.2rem;
-  font-family: roboto;
+  font-family: 'Trebuchet MS';
   font-weight: 300;
   line-height: 2.5em;
   margin-top: auto;
@@ -82,7 +87,7 @@ button:focus {
   align-self: flex-end;
   font-size: 19px;
   font-size: 1.2rem;
-  font-family: roboto;
+  font-family: 'Trebuchet MS';
   font-weight: 300;
   line-height: 2.5em;
   margin-top: auto;
@@ -110,7 +115,7 @@ button:focus {
   margin-bottom: 10px;
   line-height: 2.4em;
   color: #fff;
-  font-family: roboto;
+  font-family: 'Trebuchet MS';
   font-weight: 300;
   letter-spacing: 0px;
   letter-spacing: 0.02rem;
@@ -142,7 +147,7 @@ button:focus {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  background:#8372A6;
+  background:FFFFFFF;
   height: 120%;
 }
 
@@ -157,7 +162,6 @@ button:focus {
   -ms-flex-flow: column;
   flex-flow: column;
   z-index: 5;
-  height: 100%;
 }
 
 .welcome {
@@ -187,7 +191,7 @@ button:focus {
 .window {
   z-index: 100;
   color: #fff;
-  font-family: roboto;
+  font-family: 'Trebuchet MS';
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -202,32 +206,17 @@ button:focus {
   width: 600px;  /*360  */
   background: #fff;
   background: url('https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823') top left no-repeat;
-  margin-top: 5%;
 }
 
 .overlay {
-  background: -webkit-linear-gradient(#344059, #5A6273);
-  background: linear-gradient(#344059, #5A6273);
+  background: -webkit-linear-gradient(#7584af,#CDC1D2);
+  background: linear-gradient(#7d8db8,#ad83be);
   opacity: 0.85;
   filter: alpha(opacity=85);
   height: 560px;
   position: absolute;
   width: 600px;
   z-index: 1;
-}
-
-.bold-line {
-  background: #e7e7e7;
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  margin: auto;
-  width: 100%;
-  height: 360px;
-  z-index: 1;
-  opacity:0.1;
-    background: url('https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823') left no-repeat;
-  background-size:cover;
 }
 
 @media (max-width: 500px) {
@@ -241,21 +230,324 @@ button:focus {
   }
 }
 
+/*Todo lo que se encuentra en el head*/
 .cabeza{
-  width: 100%;
-  height: 10%;
-  position:absolute;
-  margin-top: 50px;
-  background:#5A6273;
-  box-sizing: border-box;
-  margin: auto;
+    width: 100%;
+    height: 8%;
+    position:absolute;
+    margin-top: 50px;
+    background:#b195bd;
+    box-sizing: border-box;
+    margin: auto;
+  }
+  .logo {
+    position: absolute;
+    width: 116px;
+    height: 45px;
+    left: 25px;
+    top: 7.5px;
+  }
+
+  /*Datos de usuario*/
+  .datos{
+    position: absolute;
+    width: 450px;
+    height: 550px;
+    left: 50px;
+    top: 100px;
+    background: -webkit-linear-gradient(#7D88A7,#b195bd);
+    background: linear-gradient(#7D88A7,#b195bd);
+    box-shadow: 0px 15px 50px 10px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+  }
+
+  .nombred{
+    position: absolute;
+    width: 250px;
+    height: 50px;
+    left: 40px;
+    top: 250px;
+    font-size: 30px;
+    color: #FFFF;
+    
+  }
+
+  .correod{
+    position: absolute;
+    width: 250px;
+    height: 50px;
+    left: 40px;
+    top: 325px;
+    font-size: 30px;
+    color: #FFFF;
+  }
+
+  .usuario {
+    position: absolute;
+    width: 150px;
+    height: 140px;
+    left: 140px;
+    top: 20px;
+  }
+
+/*Botones*/
+/*Botón cambiar nombre*/
+.boton1{
+    position: relative;
+    display: block;
+    height: 50px;
+    width: 350px;
+    left: 700px;
+    top: 210px;
+    border-radius: 4px;
+    border-color:transparent;
+    text-transform: uppercase;
+    color:#FFFF;
+    font-size: 18px;
+    overflow: hidden;
+    transition: all 500ms ease;
+    z-index: 0;
+    font-weight: 700;
+    cursor: pointer;
+    background-color:#7D88A7;
+    font-family: 'Trebuchet MS';
 }
-img {
-  width: 10%;
-  height: 60%;
-  margin: 10px;
-  padding: 8px;
+/*Botón cambiar correo*/
+.boton2{
+    position: relative;
+    display: block;
+    height: 50px;
+    width: 350px;
+    left: 700px;
+    top: 240px;
+    border-radius: 4px;
+    border-color: transparent;
+    text-transform: uppercase;
+    color:#FFFF;
+    font-size: 18px;
+    overflow: hidden;
+    transition: all 500ms ease;
+    z-index: 0;
+    font-weight: 700;
+    cursor: pointer;
+    background-color:#7D88A7;
+    font-family: 'Trebuchet MS';
 }
+/*Botón cambiar contraseña*/
+.boton3{
+    position: relative;
+    display: block;
+    height: 50px;
+    width: 350px;
+    left: 700px;
+    top: 270px;
+    border-radius: 4px;
+    border-color: transparent;
+    text-transform: uppercase;
+    color:#FFFF;
+    font-size: 18px;
+    overflow: hidden;
+    transition: all 500ms ease;
+    margin-bottom: 40px;
+    z-index: 0;
+    font-weight: 700;
+    background-color:#7D88A7;
+    cursor:pointer;
+    font-family: 'Trebuchet MS';
+}
+/*Guardar cambios*/
+.boton4{
+    position: relative;
+    display: block;
+    height: 65px;
+    width: 225px;
+    left: 765px;
+    top: 315px;
+    border-bottom: 5%;
+    text-transform: uppercase;
+    background-color: #7D88A7;
+    color: #D8B4DB;
+    font-size: 20px;
+    transition: all 500ms ease;
+    border: 2px solid;
+    font-weight:300;
+    cursor: pointer;
+    border-color: #434343;
+    font-family: 'Trebuchet MS';
+}
+
+/*Nuevo Documento*/
+.nuevodocu{
+    background-color: #7D88A7;
+    position: relative;
+    left: 35px;
+    height: 200px;
+    width: 200px;
+    top: 125px;
+    box-shadow: 0px 15px 50px 10px #7a5f74;
+}
+/*Documentos guardados*/
+.doc1{
+    background-color: #7D88A7;
+    position: absolute;
+    left: 35px;
+    height: 200px;
+    width: 200px;
+    top: 500px;
+    box-shadow: 0px 15px 50px 10px #7a5f74;
+}
+
+.doc2{
+    background-color: #7D88A7;
+    position: absolute;
+    left: 290px;
+    height: 200px;
+    width: 200px;
+    top: 500px;
+    box-shadow: 0px 15px 50px 10px #7a5f74;
+}
+
+.doc3{
+    background-color: #7D88A7;
+    position: absolute;
+    left: 545px;
+    height: 200px;
+    width: 200px;
+    top: 500px;
+    box-shadow: 0px 15px 50px 10px #7a5f74;
+    font-family: 'Trebuchet MS';
+}
+.ndoc{
+    position: absolute;
+    top: 300px;
+    font-size: 30px;
+    left: 35px;
+    font-family:'Trebuchet MS';
+}
+.tdoc{
+    position: absolute;
+    top: 430px;
+    font-size: 30px;
+    left: 35px;
+    font-family: 'Trebuchet MS';
+}
+
+.menu{
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    left: 1400px;
+    top: 10px;
+}
+/*Botón salir*/
+.salir{
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    left: 1400px;
+    top: 680px;
+    border-radius: 50%;
+    background-color:#6a3870;
+    color: #D8B4DB;
+    text-align: center;
+    padding: 3px;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: 'Trebuchet MS';
+}
+
+.cambionombre{
+    position: absolute;
+    height: 80px;
+    width: 400px;
+    left: 700px;
+    top: 200px;
+    border-bottom: 5%;
+    background-color: #6F90A6;
+    color: #D8B4DB;
+    text-align: center;
+    padding: 3px;
+    font-size: 30px;
+    font-family: 'Trebuchet MS';
+}
+.guardarcambios{
+    position: absolute;
+    height: 80px;
+    width: 250px;
+    left: 775px;
+    top: 450px;
+    border-bottom: 5%;
+    background-color:#7D88A7;
+    color: #D8B4DB;
+    text-align: center;
+    padding: 3px;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: 'Trebuchet MS';
+}
+/*Configuración del botón de usuario*/
+.confusuario{
+    position: absolute;
+    font-size: 45px;
+    color:#434343;
+    left: 625px;
+    top: 60px;
+    font-family: 'Trebuchet MS';
+}
+/*Divisipon del texto de inicio*/
+.gatito{
+    position: absolute;
+    height: 600px;
+    width: 550px;
+    left: 800px;
+    top: 100px;
+    background-color:#7D88A7;
+    color: #D8B4DB;
+    text-align: center;
+    padding: 3px;
+    box-shadow: 0px 15px 50px 10px #7a5f74;
+    font-family: 'Trebuchet MS';
+}
+
+.cambiocorreo{
+    position: absolute;
+    height: 80px;
+    width: 400px;
+    left: 700px;
+    top: 200px;
+    border-bottom: 5%;
+    background-color: #6F90A6;
+    color: #D8B4DB;
+    text-align: center;
+    padding: 3px;
+    font-size: 30px;
+    font-family: 'Trebuchet MS';
+}
+
+.cambiopassword{
+    position: absolute;
+    height: 80px;
+    width: 400px;
+    left: 700px;
+    top: 200px;
+    border-bottom: 5%;
+    background-color: #6F90A6;
+    color: #D8B4DB;
+    text-align: center;
+    padding: 3px;
+    font-size: 30px;
+    font-family: 'Trebuchet MS';
+}
+
+.texto{
+    position:absolute;
+    font-size: 30px;
+    top: 150px;
+    left: 40px;
+    font-family: 'Trebuchet MS';
+}
+
+
 
 #Inicio{
   height: 100%;
@@ -263,5 +555,5 @@ img {
 
 .barra_abajo{
   height: 100vh;
-  /* background:#5A6273; */
+  /* background:#5A6273;*/
 }

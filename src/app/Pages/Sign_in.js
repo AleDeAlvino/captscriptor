@@ -40,7 +40,7 @@ function Sign_in() {
     <div>
         {/* <div className='bold-line'></div> */}
         <div className="cabeza">
-            <img src={logo}/>
+            <img className="logo" src={logo}/>
         </div>
         <div className='container'>
             <div className='window'>
