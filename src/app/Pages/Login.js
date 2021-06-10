@@ -2,18 +2,40 @@ import React, { useState, useEffect } from "react";
 import { useForm } from 'react-hook-form';
 // import ReactDOM from 'react-dom'
 import logo from '../../public/logo.jpg';
+import Principal from './Principal';
+import Login from './Login';
+import { render } from 'react-dom';
 
 
 
-function Login() {
+function Login_f() {
 
   const {register, formState: { errors }, handleSubmit} = useForm();
-    // const element = <h1>Bienvenido</h1>;
+  const element = <h4>Usuario o correo incorrecto</h4>;
 
     const onSubmit = (data, e) => {
         console.log(data)
         e.target.reset()
-        // ReactDOM.render(element, document.getElementById('root'))
+        fetch("/user/Login", {
+          method: "POST",
+          body: JSON.stringify({
+              email: data.corr,
+              password: data.pass
+          }),
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("Hecho")
+          if(data.code==200){
+            render(<Principal/>, document.getElementById('Inicio'))
+          }else{
+            render(element, document.getElementById('message_err'))
+          }
+        });
     }
 
 
@@ -54,9 +76,7 @@ function Login() {
               ></input>
               {errors.pass && <span> Campo requerido con minimo de 8 caracteres </span>}
             </div>
-            <div className="spacing">
-              o entrar con <span className="highlight">Facebook</span>
-            </div>
+            <div id="message_err"></div>
             <div>
               <button className="ghost-round full-width">Iniciar sesión</button>
             </div>
@@ -75,4 +95,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Login_f;

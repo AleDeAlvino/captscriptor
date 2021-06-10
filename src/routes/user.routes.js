@@ -12,20 +12,36 @@ router.post('/SignIn', async (req, res) => {
             var password = hashedPassword;
             const user = new User({ name, email, password});
             user.save();
-            res.json({status: 'Usuario guardado'});
+            res.json({code: 200, message: 'Usuario guardado'});
         }).catch(function(error){
             console.log("Error saving user: ");
             console.log(error);
-            res.json({status: 'Algo salio mal'});
+            res.json({code: 500, message:'Algo salio mal'});
         })
     
 });
 
 router.post('/Login', async (req, res) => {
     const { email, password} = req.body;
-    const user = await User.find({$and:[{email : email}, {password: password}]});
-    console.log(user);
-    res.json({status: 'Usuario guardado'});
+    console.log("Entro a la funcion");
+    await User.find({email:email})
+    .then(function(user){
+        console.log("llego aqui");
+        console.log(user);
+        var password2 = user[0].password;
+        console.log(password2);
+        return bcrypt.compare(password, password2);
+    })
+    .then(function(samePassword){
+        if(!samePassword){
+            res.json({code: 500, message: 'Contraseña incorrecta'});
+        }
+        res.json({code: 200, message: 'Usuario autenticado'});
+    })
+    .catch(function(error){
+        console.log("Error de autenticacion");
+        res.json({code: 500, message: 'Usuario no autenticado'});
+    });
 });
 
 module.exports = router;

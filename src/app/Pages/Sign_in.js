@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useForm } from 'react-hook-form';
 // import ReactDOM from 'react-dom'
 import logo from '../../public/logo.jpg';
+import { render } from 'react-dom';
+import Login from './Login';
 
 
 
@@ -29,6 +31,7 @@ function Sign_in() {
           .then((res) => res.json())
           .then((data) => {
             console.log("Hecho")
+            render(<Login/>, document.getElementById('Inicio'))
           });
     }
 
@@ -77,7 +80,6 @@ function Sign_in() {
                         </input>
                         {errors.pass && <span> Campo requerido con minimo de 8 caracteres </span>}
                     </div>
-                    <div className='spacing'>o continuar con <span className='highlight'>Facebook</span></div>
                     <div><button className='ghost-round full-width'>Crear cuenta</button></div>
                     </form>
                 </div>
