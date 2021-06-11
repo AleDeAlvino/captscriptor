@@ -16,7 +16,7 @@ const router = express.Router();
 exports.postLogout = (req, res) => {
     req.session.destroy(err => {
         console.log(err);
-        res.json({code: 500, message:'Algo salio mal'});
+        res.redirect('/');
     })
-    res.json({code: 200, message:'Bye(:'});
+    
 };

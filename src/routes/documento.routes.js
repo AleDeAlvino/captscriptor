@@ -5,6 +5,7 @@ const router = express.Router();
 const controlador = require('./controladores/ctrl');
 const Document = require('../models/document_model');
 
+router.post('/Logout', controlador.postLogout);
 
 router.post('/new_doc', async (req, res) => {
     const {name_doc} = req.body;
@@ -75,6 +76,14 @@ router.post('/agregar_inv', async (req, res) => {
     res.json({messa: "oki"});
 });
 
-router.post('/Logout', controlador.postLogout);
+router.get('/docs_user', async (req, res) => {
+    var user = req.session.user;
+    var email_dueño = user[0].email;
+    const documentos = await Document.find({$or:[{email_dueño:email_dueño},{inv1:email_dueño}]});
+        res.json(documentos);
+});
+
+
+
 
 module.exports = router;

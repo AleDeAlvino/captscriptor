@@ -10,15 +10,22 @@ import logo from '../../public/logo.jpg';
 function documento(props) {
 
   const [Cont, setCont] = useState("");
+  const [Inv, setInv] = useState("");
   // console.log("prps de documento: ",props);
   const {register, formState: { errors }, handleSubmit} = useForm();
     // const element = <h1>Bienvenido</h1>;
     // let message = document.getElementById('message');
 
     const onSubmit = (data, e) => {
-        // console.log(data.target.value);
+        console.log(data.target.value);
         setCont(data.target.value);
+        console.log(Cont);
     }
+    const onSubmit2 = (data, e) => {
+      console.log(data.target.value);
+      setInv(data.target.value);
+      console.log(Cont);
+  }
 
     const guardar = (data, e) => {
 
@@ -51,7 +58,7 @@ function documento(props) {
         method: "POST",
         body: JSON.stringify({
           _id: props.idDoc,
-          invitado: data.inv
+          invitado: Inv
         }),
         headers: {
           Accept: "application/json",
@@ -84,21 +91,15 @@ function documento(props) {
             
             
             <div className="agregar">
-                <form onSubmit={handleSubmit(agregar)}> 
                     <input
                         type='text' 
                         placeholder='correo del invitado'
                         name="inv"
-                        {...register('inv',{
-                          required: true,
-                          type: 'email'
-                      })}
+                        onChange={onSubmit2}
                     ></input>
-                    {errors.corr && <span>Ingrese un correo valido</span>}
                     <div className="agregar_btn">
-                        <button>Agregar</button>
+                        <button onClick={agregar}>Agregar</button>
                     </div>
-                </form>
             </div>
     </div>
     <div className='container'>
