@@ -612,3 +612,17 @@ transform: scale(1.1);
   left: 36px;
   font-family:'Trebuchet MS';
 }
+
+#nom_input{
+  position: relative;
+  float: left;
+  width: 25%;
+  height: 15%;
+  left: 35%;
+}
+
+.crear_btn{
+  position: relative;
+  float: center;
+  margin-top: 2%;
+}

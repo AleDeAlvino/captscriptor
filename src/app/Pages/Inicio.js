@@ -36,9 +36,9 @@ function Inicio () {
         <div>
         <Link to="/Documento">Documento</Link>
         </div>
-        <div>
+        {/* <div>
         <Link to="/Principal">Principal</Link>
-        </div>
+        </div> */}
       </div>
     );
   }

@@ -32,7 +32,7 @@ function documento() {
                 <button>Guardar cambios</button>
                 </div>
             </form>
-            </div> 
+            </div>
             
             
             <div className="agregar">

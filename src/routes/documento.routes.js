@@ -3,16 +3,21 @@ const router = express.Router();
 // const User = require('../models/user_model');
 // var bcrypt = require('bcrypt');
 const controlador = require('./controladores/ctrl');
-// const isAuth = require('../is_auth');
+const Document = require('../models/document_model');
 
-// const auth = function (req,res,next){
-//     if (req.session.id && req.cookies.user_sid) {
-//         res.send('No puedes acceder a esa pagina sin logearte')
-//     } else {
-//         next();
-//     } 
-// }
 
+router.post('/new_doc', async (req, res) => {
+    const {name_doc} = req.body;
+    var user = req.session.user;
+    var email_dueño = user[0].email;
+    console.log("el user es: ", user);
+    var namedoc = name_doc;
+    const doc = new Document({email_dueño, namedoc});
+    doc.save();
+    console.log("si se pudo");
+    console.log(doc);
+    res.json({doc});
+});
 
 router.post('/Logout', controlador.postLogout);
 

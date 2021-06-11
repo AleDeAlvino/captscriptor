@@ -4,13 +4,54 @@ import { useForm } from 'react-hook-form';
 import logo from '../../public/logo.jpg';
 import { render } from 'react-dom';
 import Login from './Login';
+import Documento from './Documento';
 
-function Sign_in() {
+function Principal(props) {
+
+    console.log(props);
+
+    const new_d = (data, e) => {
+        console.log("Hola")
+        console.log("data de duncion: ", data);
+      fetch("/docs/new_doc", {
+        method: "POST",
+        body: JSON.stringify({
+          name_doc: data.nombred,
+      }),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Hecho")
+          render(<Documento/>, document.getElementById('Inicio'))
+      });
+        
+    }
 
     const {register, formState: { errors }, handleSubmit} = useForm();
-      // const element = <h1>Bienvenido</h1>;
+    const element2 = <h4>Todo salio bien</h4>;
+      const element = <div>
+          <form onSubmit={handleSubmit(new_d)}>
+        <h3>Ingresa nombre del documento</h3>
+      <input
+        type='text'
+        placeholder='Nombre del documento'
+        name= "nombred"
+                {...register('nombred',{
+                  required: true,
+              })}
+      ></input>
+      <div className="crear_btn">
+         <button>Crear nuevo documento</button>
+      </div>
+      </form>
+</div>;
   
       const onSubmit = (data, e) => {
+          console.log("hola");
           
         fetch("/docs/Logout", {
           method: "POST",
@@ -26,16 +67,21 @@ function Sign_in() {
         });
           
       }
+
+      const nom_in_doc = (data, e) =>{
+        render(element, document.getElementById('nom_input'))
+      }
   
   
     return (
       <div>
         <div className='bold-line'></div>
         <div className="cabeza"> 
-        <img src={logo} alt="logo" class="logo"/>
-        <img src="menu.png" alt="menu" class="menu"/>
+        <img src={logo} alt="logo" className="logo"/>
+        <img src="menu.png" alt="menu" className="menu"/>
       </div>
-        <div className="nuevodocu"></div>
+        <div className="nuevodocu" onClick={nom_in_doc}></div>
+        <div id="nom_input"></div>
         <p className="ndoc">Nuevo documento</p>
         <div className="doc1"></div>
         <div className="doc2"></div>
@@ -48,4 +94,4 @@ function Sign_in() {
     );
   }
   
-  export default Sign_in;
+  export default Principal;
