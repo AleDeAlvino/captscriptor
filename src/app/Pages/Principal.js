@@ -32,7 +32,7 @@ function Sign_in() {
       <div>
         <div className='bold-line'></div>
         <div className="cabeza"> 
-        <img src="logo.png" alt="logo" class="logo"/>
+        <img src={logo} alt="logo" class="logo"/>
         <img src="menu.png" alt="menu" class="menu"/>
       </div>
         <div className="nuevodocu"></div>

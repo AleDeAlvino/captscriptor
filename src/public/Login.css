@@ -417,13 +417,6 @@ button:focus {
     box-shadow: 0px 15px 50px 10px #7a5f74;
     font-family: 'Trebuchet MS';
 }
-.ndoc{
-    position: absolute;
-    top: 300px;
-    font-size: 30px;
-    left: 35px;
-    font-family:'Trebuchet MS';
-}
 .tdoc{
     position: absolute;
     top: 430px;
@@ -556,4 +549,66 @@ button:focus {
 .barra_abajo{
   height: 100vh;
   /* background:#5A6273;*/
+}
+
+#chat-container {
+  max-width: 600px;
+  margin: 30px auto;
+  border: 1px solid #ddd;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, .5);
+  height: 750px;
+  background:  #eee; 
+  margin-top: 6%;
+}
+
+#message {
+  background-color:#eee
+} 
+
+.nom_doc {
+  position: relative;
+  float: left;
+  margin-top: 1%;
+  margin-left: 25%;
+  width: 15%;
+}
+
+.agregar{
+  position: relative;
+  float: left;
+  margin-top: 1%;
+  left: 10%;
+  width: 15%;
+}
+
+.guardar_btn{
+  position: relative;
+  float: right;
+}
+.agregar_btn{
+  position: relative;
+  float: right;
+}
+
+.nuevodocu{
+   
+  background-color: #7D88A7; 
+  position: relative;
+  left: 35px;
+  height: 200px;
+  width: 200px;
+  top: 125px;
+  box-shadow: 0px 15px 50px 10px #7a5f74;   
+}
+/*Efecto para poder hacer un zoom al momento de pasar el cursor  */
+.nuevodocu:hover{
+transform: scale(1.1); 
+}
+
+.ndoc{
+  position: absolute;
+  top: 311px;
+  font-size: 30px;
+  left: 36px;
+  font-family:'Trebuchet MS';
 }

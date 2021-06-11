@@ -3,6 +3,8 @@ import { render } from 'react-dom';
 import Inicio from './Pages/Inicio';
 import Login from './Pages/Login';
 import Sign_in from './Pages/Sign_in';
+import Documento from './Pages/Documento'
+import Principal from './Pages/Principal'
 import {
     BrowserRouter as Router,
     Switch,
@@ -24,6 +26,12 @@ import {
           </Route>
           <Route exact path="/Sign_in">
             <Sign_in />
+          </Route>
+          <Route exact path="/Documento">
+            <Documento />
+          </Route>
+          <Route exact path="/Principal">
+            <Principal />
           </Route>
           <Route exact path="/">
             <Inicio />

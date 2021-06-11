@@ -33,6 +33,12 @@ function Inicio () {
         <div>
         <Link to="/Sign_in">Sign in</Link>
         </div>
+        <div>
+        <Link to="/Documento">Documento</Link>
+        </div>
+        <div>
+        <Link to="/Principal">Principal</Link>
+        </div>
       </div>
     );
   }

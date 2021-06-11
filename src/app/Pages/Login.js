@@ -43,7 +43,7 @@ function Login_f() {
     <div  className="cont_ru">
       <div className="bold-line"></div>
       <div className="cabeza">
-        <img src={logo}/>
+        <img className="logo" src={logo}/>
       </div>
       <div className="container">
         <div className="window">
