@@ -21,8 +21,6 @@ function documento(props) {
     }
 
     const guardar = (data, e) => {
-      console.log(message);
-      console.log(message.value);
 
       fetch("/docs/guardar_doc", {
         method: "POST",
@@ -46,6 +44,31 @@ function documento(props) {
       });
     }
 
+    const agregar = (data, e) => {
+      
+
+      fetch("/docs/agregar_inv", {
+        method: "POST",
+        body: JSON.stringify({
+          _id: props.idDoc,
+          invitado: data.inv
+        }),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("se agrego el invitado");
+        // if(data.code==200){
+        //   render(<Principal/>, document.getElementById('Inicio'))
+        // }else{
+        //   render(element, document.getElementById('message_err'))
+        // }
+      });
+    }
+
   return (
     <div>
     <div className="cabeza">
@@ -61,11 +84,17 @@ function documento(props) {
             
             
             <div className="agregar">
-                <form> 
+                <form onSubmit={handleSubmit(agregar)}> 
                     <input
                         type='text' 
                         placeholder='correo del invitado'
+                        name="inv"
+                        {...register('inv',{
+                          required: true,
+                          type: 'email'
+                      })}
                     ></input>
+                    {errors.corr && <span>Ingrese un correo valido</span>}
                     <div className="agregar_btn">
                         <button>Agregar</button>
                     </div>
