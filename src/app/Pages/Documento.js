@@ -11,7 +11,7 @@ function documento(props) {
 
   const [Cont, setCont] = useState("");
   const [Inv, setInv] = useState("");
-  // console.log("prps de documento: ",props);
+  console.log("prps de documento: ",props);
   const {register, formState: { errors }, handleSubmit} = useForm();
     // const element = <h1>Bienvenido</h1>;
     // let message = document.getElementById('message');
@@ -104,7 +104,7 @@ function documento(props) {
     </div>
     <div className='container'>
     <div id="chat-container">
-        <textarea id="message" name="texto" cols="81" rows="50" placeholder="Escribe aquí el texto.." onChange={onSubmit}  >
+        <textarea id="message" name="texto" cols="81" value={props.content} rows="50" placeholder="Escribe aquí el texto.." onChange={onSubmit}  >
         </textarea>
     </div>
     </div>
