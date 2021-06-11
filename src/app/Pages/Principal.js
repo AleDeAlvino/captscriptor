@@ -26,7 +26,9 @@ function Principal(props) {
       .then((res) => res.json())
       .then((data) => {
         console.log("Hecho")
-          render(<Documento/>, document.getElementById('Inicio'))
+        console.log(data);
+        console.log(data.doc._id);
+          render(<Documento idDoc ={data.doc._id}/>, document.getElementById('Inicio'))
       });
         
     }

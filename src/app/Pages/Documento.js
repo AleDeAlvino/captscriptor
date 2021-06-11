@@ -7,15 +7,44 @@ import logo from '../../public/logo.jpg';
 
 
 
-function documento() {
+function documento(props) {
 
+  const [Cont, setCont] = useState("");
+  // console.log("prps de documento: ",props);
   const {register, formState: { errors }, handleSubmit} = useForm();
     // const element = <h1>Bienvenido</h1>;
+    // let message = document.getElementById('message');
 
     const onSubmit = (data, e) => {
-        
+        // console.log(data.target.value);
+        setCont(data.target.value);
     }
 
+    const guardar = (data, e) => {
+      console.log(message);
+      console.log(message.value);
+
+      fetch("/docs/guardar_doc", {
+        method: "POST",
+        body: JSON.stringify({
+          _id: props.idDoc,
+          content: Cont
+        }),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("se guardaron cambios");
+        // if(data.code==200){
+        //   render(<Principal/>, document.getElementById('Inicio'))
+        // }else{
+        //   render(element, document.getElementById('message_err'))
+        // }
+      });
+    }
 
   return (
     <div>
@@ -23,11 +52,7 @@ function documento() {
             <img className="logo" src={logo}/>
             
             <div className="nom_doc">
-            <form>
-                {/* <input
-                 type='text' 
-                 placeholder='Nombre del documento'
-                ></input> */}
+            <form onSubmit={handleSubmit(guardar)}>
                 <div className="guardar_btn">
                 <button>Guardar cambios</button>
                 </div>

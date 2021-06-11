@@ -19,6 +19,24 @@ router.post('/new_doc', async (req, res) => {
     res.json({doc});
 });
 
+router.post('/guardar_doc', async (req, res) => {
+    const {_id, content} = req.body;
+    const doc_old = await Document.findById(_id);
+    console.log(doc_old);
+    var email_dueño = doc_old.email_dueño;
+    var namedoc = doc_old.namedoc;
+    console.log("e: ", email_dueño, "  n: ", namedoc);
+    const doc_new = {email_dueño, namedoc, content};
+    await Document.findByIdAndUpdate(_id, doc_new, {
+        useFindAndModify: false
+    }).then(function(){
+        console.log("si jalo")
+    }).catch(function(){
+        console.log("No jalo")
+    })
+    res.json({messa: "oki"});
+});
+
 router.post('/Logout', controlador.postLogout);
 
 module.exports = router;
