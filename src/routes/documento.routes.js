@@ -54,15 +54,18 @@ router.post('/agregar_inv', async (req, res) => {
     console.log(inv1);
     // var inv1 = invitado;
     // var doc_new = {email_dueño, namedoc, content, inv1};
-    if(inv1 = " "){
+    if(inv1 === " "){
         inv1 = invitado;
-        var doc_new = {email_dueño, namedoc, content, inv1};
+        inv2 = " ";
+        inv3 = " ";
+        var doc_new = {email_dueño, namedoc, content, inv1, inv2, inv3};
     }
-    else if (inv2 = " "){
+    else if (inv2 === " "){
         inv2 = invitado;
-        var doc_new = {email_dueño, namedoc, content, inv1, inv2};
+        inv3 = " ";
+        var doc_new = {email_dueño, namedoc, content, inv1, inv2, inv3};
     }
-    else if (inv3 = " "){
+    else if (inv3 === " "){
         inv3 = invitado;
         var doc_new = {email_dueño, namedoc, content, inv1, inv2, inv3};
     }
