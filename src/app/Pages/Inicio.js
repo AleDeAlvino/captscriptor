@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Login from './Login';
+import logo from '../../public/logo.jpg';
 import { render } from 'react-dom';
 import {
   BrowserRouter as Router,
@@ -27,7 +28,24 @@ function Inicio () {
     return (
       // <div>hola</div>
       <div>
+        <div className="cabeza"> 
+        <img className="logo" src={logo}/>
+        </div>
+        <div className="gatito">
+          {/* <img src="educacion.png" alt="educacion" className="educacion"/> */}
+        </div>
+          <div>
+            <button className="inicio">Iniciar sesión</button>
+            <button className="crear">Crear cuenta</button>
+          </div>
         <div>
+          <div className="texto">
+          Crea documentos PDF junto con tu equipo de trabajo con la ayuda de CAPT SCRIPTOR.
+          <br></br>
+          Dessarrolla tu creatividad ahora mismo. 
+          <br></br>
+          ¡Crea una cuenta!
+          <div>
         <Link to="/Login">Log in</Link>
         </div>
         <div>
@@ -36,9 +54,11 @@ function Inicio () {
         <div>
         <Link to="/Documento">Documento</Link>
         </div>
+        </div>
         {/* <div>
         <Link to="/Principal">Principal</Link>
         </div> */}
+      </div>
       </div>
     );
   }

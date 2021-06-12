@@ -4,10 +4,40 @@ import { useForm } from 'react-hook-form';
 import logo from '../../public/logo.jpg';
 // import { render } from 'react-dom';
 // import Login from './Login';
-
-
+// import io from 'socket.io-client';
+import socketIOClient from "socket.io-client";
+const ENDPOINT = ":3000";
 
 function documento(props) {
+
+
+  useEffect(() => {
+    const socket = socketIOClient(ENDPOINT);
+
+    let message = document.getElementById('message');
+    
+    socket.on('chat:message', function (data){
+    
+        output.innerHTML += `<p>
+            <strong>${data.username}</strong>: ${data.message} 
+         </p>`
+     });
+     
+     socket.on('chat:typing', function (data) {
+     
+       console.log(data);
+       
+       message.value = "";
+       message.value = data;
+       
+     });
+    
+     message.addEventListener('keypress', function () {
+        socket.emit('chat:typing', message.value);
+    })
+
+  }, []);
+
 
   const [Cont, setCont] = useState("");
   const [Inv, setInv] = useState("");
@@ -108,6 +138,9 @@ function documento(props) {
         </textarea>
     </div>
     </div>
+    {/* <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js" integrity="sha384-DkkWv9oJFWLIydBXXjkBWnG1/fuVhw8YPBq37uvvD6WSYRFRqr21eY5Dg9ZhmWdy"></script>
+    <script defer src="../../public/socket_conection.js"></script> */}
     </div>
   );
 }
