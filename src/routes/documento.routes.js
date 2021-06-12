@@ -13,7 +13,10 @@ router.post('/new_doc', async (req, res) => {
     var email_dueño = user[0].email;
     console.log("el user es: ", user);
     var namedoc = name_doc;
-    const doc = new Document({email_dueño, namedoc});
+    var inv1 =" ";
+    var inv2 =" ";
+    var inv3 =" ";
+    const doc = new Document({email_dueño, namedoc, inv1, inv2, inv3});
     doc.save();
     console.log("si se pudo");
     console.log(doc);
@@ -26,10 +29,10 @@ router.post('/guardar_doc', async (req, res) => {
     console.log(doc_old);
     var email_dueño = doc_old.email_dueño;
     var namedoc = doc_old.namedoc;
+    var inv1 =doc_old.inv1;
+    var inv2 =doc_old.inv2;
+    var inv3 =doc_old.inv3;
     console.log("e: ", email_dueño, "  n: ", namedoc);
-    var inv1 =" ";
-    var inv2 =" ";
-    var inv3 =" ";
     const doc_new = {email_dueño, namedoc, content, inv1, inv2, inv3};
     await Document.findByIdAndUpdate(_id, doc_new, {
         useFindAndModify: false

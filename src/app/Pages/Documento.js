@@ -15,14 +15,18 @@ function documento(props) {
     const socket = socketIOClient(ENDPOINT);
 
     let message = document.getElementById('message');
+
+    // socket.on('chat:message', function (data){
     
-    socket.on('chat:message', function (data){
-    
-        output.innerHTML += `<p>
-            <strong>${data.username}</strong>: ${data.message} 
-         </p>`
-     });
+    //     output.innerHTML += `<p>
+    //         <strong>${data.username}</strong>: ${data.message} 
+    //      </p>`
+    //  });
      
+     
+    socket.emit('name_room', props.idDoc);
+
+
      socket.on('chat:typing', function (data) {
      
        console.log(data);
@@ -39,7 +43,7 @@ function documento(props) {
   }, []);
 
 
-  const [Cont, setCont] = useState("");
+  const [Cont, setCont] = useState(props.content);
   const [Inv, setInv] = useState("");
   // console.log("prps de documento: ",props);
   const {register, formState: { errors }, handleSubmit} = useForm();
@@ -134,7 +138,7 @@ function documento(props) {
     </div>
     <div className='container'>
     <div id="chat-container">
-        <textarea id="message" name="texto" cols="81" value={props.content} rows="50" placeholder="Escribe aquí el texto.." onChange={onSubmit}  >
+        <textarea id="message" name="texto" cols="81" value={Cont} rows="50" placeholder="Escribe aquí el texto.." onChange={onSubmit}  >
         </textarea>
     </div>
     </div>

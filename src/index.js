@@ -45,6 +45,14 @@ const io = SocketIO(server);
 io.on('connection', (socket) => {
     console.log('new connection', socket.id);
 
+    var namer;
+
+    socket.on('name_room', (data) => {
+        console.log(data);
+        namer = data;
+        socket.join(data);
+    });
+
     socket.on('chat:message', (data) => {
         io.sockets.emit('chat:message', data)
     });
@@ -53,7 +61,8 @@ io.on('connection', (socket) => {
         // if(data!=""){
             console.log(data);
             // io.emit('chat:typing', data);
-            socket.broadcast.emit('chat:typing', data);
+            console.log("enviando a: ", namer);
+            socket.to(namer).emit('chat:typing', data);
         // }
         // io.emit('chat:typing', data);
     });
