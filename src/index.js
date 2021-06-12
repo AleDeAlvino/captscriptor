@@ -33,6 +33,30 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //starting the server
 
-app.listen(app.get('port'), ()=> {
+const server = app.listen(app.get('port'), ()=> {
     console.log(`Server on port ${app.get('port')}`);
+});
+
+
+//websockets
+const SocketIO = require('socket.io');
+const io = SocketIO(server);
+
+io.on('connection', (socket) => {
+    console.log('new connection', socket.id);
+
+    socket.on('chat:message', (data) => {
+        io.sockets.emit('chat:message', data)
+    });
+
+    socket.on('chat:typing', (data) => {
+        // if(data!=""){
+            console.log(data);
+            // io.emit('chat:typing', data);
+            socket.broadcast.emit('chat:typing', data);
+        // }
+        // io.emit('chat:typing', data);
+    });
+
+
 });

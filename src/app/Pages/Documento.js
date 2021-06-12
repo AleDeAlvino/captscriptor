@@ -11,20 +11,20 @@ function documento(props) {
 
   const [Cont, setCont] = useState("");
   const [Inv, setInv] = useState("");
-  console.log("prps de documento: ",props);
+  // console.log("prps de documento: ",props);
   const {register, formState: { errors }, handleSubmit} = useForm();
     // const element = <h1>Bienvenido</h1>;
     // let message = document.getElementById('message');
 
     const onSubmit = (data, e) => {
-        console.log(data.target.value);
+        // console.log(data.target.value);
         setCont(data.target.value);
-        console.log(Cont);
+        // console.log(Cont);
     }
     const onSubmit2 = (data, e) => {
-      console.log(data.target.value);
+      // console.log(data.target.value);
       setInv(data.target.value);
-      console.log(Cont);
+      // console.log(Cont);
   }
 
     const guardar = (data, e) => {
