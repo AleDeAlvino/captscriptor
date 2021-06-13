@@ -6,7 +6,12 @@ import Principal from './Principal';
 import Login from './Login';
 import { render } from 'react-dom';
 
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function Login_f() {
 
@@ -81,9 +86,9 @@ function Login_f() {
               <button className="ghost-round full-width">Iniciar sesión</button>
             </div>
             </form>
-            <div>
+            <div className="btn_ini_crea">
               <button className="ghost-round full-width2">
-                Crear cuenta nueva
+              <Link to="/Sign_in">Crear cuenta nueva</Link>
               </button>
               
             </div>

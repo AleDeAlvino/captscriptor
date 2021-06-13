@@ -782,3 +782,9 @@ position: absolute;
   font-size: 16px; 
   border-radius: 5px;
 }
+
+.btn_ini_crea{
+  position: relative;
+  float: left;
+  margin-left: 35%;
+}

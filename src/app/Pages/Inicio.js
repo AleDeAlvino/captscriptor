@@ -36,8 +36,8 @@ function Inicio () {
           <img src={edu} className="educacion"/>
         </div>
           <div>
-            <button className="inicio">Iniciar sesión</button>
-            <button className="crear">Crear cuenta</button>
+            <button className="inicio"><Link to="/Login">Iniciar sesión</Link></button>
+            <button className="crear"><Link to="/Sign_in">Crear cuenta</Link></button>
           </div>
         <div>
           <div className="texto">
@@ -46,15 +46,6 @@ function Inicio () {
           Dessarrolla tu creatividad ahora mismo. 
           <br></br>
           ¡Crea una cuenta!
-          <div>
-        <Link to="/Login">Log in</Link>
-        </div>
-        <div>
-        <Link to="/Sign_in">Sign in</Link>
-        </div>
-        <div>
-        <Link to="/Documento">Documento</Link>
-        </div>
         </div>
         {/* <div>
         <Link to="/Principal">Principal</Link>
