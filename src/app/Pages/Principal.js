@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from 'react-hook-form';
-// import ReactDOM from 'react-dom'
 import logo from '../../public/logo.jpg';
 import { render } from 'react-dom';
 import Login from './Login';
 import Documento from './Documento';
-import Inicio from '../Pages/Inicio';
 
 function Principal(props) {
 
+  //constantes que necesita el useform para validar
   const {register, formState: { errors }, handleSubmit} = useForm();
   const [docs, setdocs] = useState([]);
-//   const [idDoc, setidDoc] = useState([]);
-//   const [content, setcontent] = useState([]);
-//   var i =0;
-//     console.log(props);
 
+  //Funcion encargada de buscar todos los documentos pertenecientes al usuario o a los que haya sido invitado a través de la ruta docs_user
     const fetchDocs = () => {
       fetch("/docs/docs_user")
         .then((res) => res.json())
@@ -25,11 +21,13 @@ function Principal(props) {
         });
     }
 
+    //funcion encargada de ejecutar fetchDocs al momento de cargar la pagina
     useEffect(() => {
         fetchDocs();
       
     }, []);
 
+    //Funcion para crear un nuevo documento a través de la ruta new_doc
     const new_d = (data, e) => {
         console.log("Hola")
         console.log("data de duncion: ", data);
@@ -53,9 +51,7 @@ function Principal(props) {
         
     }
 
-    
-//     const element2 = <h4>Todo salio bien</h4>;
-  
+   //Funcion para cerrar sesion a través de la ruta Logout
       const logoutC = (data, e) => {
           console.log("hola");
           
@@ -76,29 +72,31 @@ function Principal(props) {
         render(<Login/>, document.getElementById('Inicio'));
       }
 
+    //Elemento que se renderiza a traves de la funcion nom_in_doc
       const element = <div>
       <form onSubmit={handleSubmit(new_d)}>
-    <h3>Ingresa nombre del documento</h3>
-  <input
-    type='text'
-    placeholder='Nombre del documento'
-    name= "nombred"
+        <h3>Ingresa nombre del documento</h3>
+        <input
+            type='text'
+            placeholder='Nombre del documento'
+            name= "nombred"
             {...register('nombred',{
-              required: true,
-          })}
-  ></input>
-  <div >
-     <button className="crear_btn">Crear nuevo documento</button>
-  </div>
-  </form>
-</div>;
+                required: true,
+            })}
+        ></input>
+        <div >
+            <button className="crear_btn">Crear nuevo documento</button>
+        </div>
+      </form>
+      </div>;
 
+      //Funcion encargada de renderizar el formulario para ingresar nombre del archivo al momento de querer crearlo
       const nom_in_doc = (data, e) =>{
         render(element, document.getElementById('nom_input'))
       }
       
+      //Funcion encargada de abrir el documento que previamente ya fue creado
       function abrir (_id, content, namedoc){
-        // console.log(data);
           render(<Documento idDoc ={_id} content={content} namedoc={namedoc}/>, document.getElementById('Inicio'))
       };
   
@@ -107,13 +105,13 @@ function Principal(props) {
         <div className='bold-line'></div>
         <div className="cabeza"> 
         <img src={logo} alt="logo" className="logo"/>
-            <button className="cerrar" onClick={logoutC}>Cerrar Sesion</button>
+            <button className="cerrar" onClick={logoutC}>Cerrar Sesion</button> {/* Cierra la sesion y te dirige al login */}
       </div>
         <div className="nuevodocu" onClick={nom_in_doc}></div>
         <div id="nom_input"></div>
         <p className="ndoc">Nuevo documento</p>
         <p className="tdoc">Todos tus documentos</p>
-        {docs.map((datos) => {
+        {docs.map((datos) => {  {/* mapeo de todos los documentos encontrados por la funcion fetchDoc y almacenados en la variable docs */}
                     return (
                         <div className="cua_all">
                           <div className="nuevodocu2" onClick={() =>{abrir(datos._id, datos.content, datos.namedoc)}}></div>

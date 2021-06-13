@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from 'react-hook-form';
-// import ReactDOM from 'react-dom'
 import logo from '../../public/logo.jpg';
 import Principal from './Principal';
 import Login from './Login';
@@ -8,16 +7,18 @@ import { render } from 'react-dom';
 
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
   Link
 } from "react-router-dom";
 
 function Login_f() {
 
+  //constantes que necesita el useform para validar
   const {register, formState: { errors }, handleSubmit} = useForm();
+
+  //mensaje de error en caso de no sel valido los datos enviados
   const element = <h4>Usuario o correo incorrecto</h4>;
 
+  //Funcion que consulta la ruta Login para iniciar sesion
     const onSubmit = (data, e) => {
         console.log(data)
         e.target.reset()
@@ -68,7 +69,7 @@ function Login_f() {
                   type: 'email'
               })}
               ></input>
-              {errors.corr && <span>Ingrese un correo valido</span>}
+              {errors.corr && <span>Ingrese un correo valido</span>} {/* manda mensaje de error al useform */}
               <input
                 type="password"
                 placeholder="Contraseña"
@@ -79,16 +80,16 @@ function Login_f() {
                   minLength: 8
               })}
               ></input>
-              {errors.pass && <span> Campo requerido con minimo de 8 caracteres </span>}
+              {errors.pass && <span> Campo requerido con minimo de 8 caracteres </span>} {/* manda mensaje de error al useform */}
             </div>
             <div id="message_err"></div>
             <div>
-              <button className="ghost-round full-width">Iniciar sesión</button>
+              <button className="ghost-round full-width">Iniciar sesión</button> {/* manda la informacion del formulario para ser validada */}
             </div>
             </form>
             <div className="btn_ini_crea">
               <button className="ghost-round full-width2">
-              <Link to="/Sign_in">Crear cuenta nueva</Link>
+              <Link to="/Sign_in">Crear cuenta nueva</Link> {/* Te dirige a otra pantalla para crear una cuenta nueva */}
               </button>
               
             </div>

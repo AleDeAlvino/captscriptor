@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from 'react-hook-form';
-// import ReactDOM from 'react-dom'
 import logo from '../../public/logo.jpg';
 import { render } from 'react-dom';
 import Login from './Login';
@@ -9,13 +8,13 @@ import Login from './Login';
 
 function Sign_in() {
 
+  //constantes que necesita el useform para validar
   const {register, formState: { errors }, handleSubmit} = useForm();
-    // const element = <h1>Bienvenido</h1>;
 
+    //Funcion que consulta la ruta SignIn para registrar al usuario
     const onSubmit = (data, e) => {
         console.log(data)
         e.target.reset()
-        // ReactDOM.render(element, document.getElementById('root'))
         fetch("/user/SignIn", {
             method: "POST",
             body: JSON.stringify({
@@ -38,7 +37,6 @@ function Sign_in() {
 
   return (
     <div>
-        {/* <div className='bold-line'></div> */}
         <div className="cabeza">
             <img className="logo" src={logo}/>
         </div>
@@ -58,7 +56,7 @@ function Sign_in() {
                                 required: true,
                             })}>
                         </input>
-                        {errors.name && <span> Campo requerido </span>}
+                        {errors.name && <span> Campo requerido </span>} {/* manda mensaje de error al useform */}
                         <input 
                             type='email' 
                             placeholder='Correo electrónico' 
@@ -68,7 +66,7 @@ function Sign_in() {
                                 type: 'email'
                             })}>
                         </input>
-                        {errors.corr && <span>Ingrese un correo valido</span>}
+                        {errors.corr && <span>Ingrese un correo valido</span>} {/* manda mensaje de error al useform */}
                         <input 
                             type='password'
                             placeholder='Contraseña'
@@ -78,9 +76,9 @@ function Sign_in() {
                                 minLength: 8
                             })}>
                         </input>
-                        {errors.pass && <span> Campo requerido con minimo de 8 caracteres </span>}
+                        {errors.pass && <span> Campo requerido con minimo de 8 caracteres </span>} {/* manda mensaje de error al useform */}
                     </div>
-                    <div><button className='ghost-round full-width'>Crear cuenta</button></div>
+                    <div><button className='ghost-round full-width'>Crear cuenta</button></div>{/* manda la informacion del formulario para ser validada */}
                     </form>
                 </div>
             </div>

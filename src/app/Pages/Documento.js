@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from 'react-hook-form';
-// import ReactDOM from 'react-dom'
 import logo from '../../public/logo.jpg';
 import { render } from 'react-dom';
-// import Login from './Login';
-// import io from 'socket.io-client';
 import Principal from './Principal';
 import { jsPDF } from "jspdf";
 import socketIOClient from "socket.io-client";
@@ -12,23 +9,19 @@ const ENDPOINT = ":3000";
 
 function documento(props) {
 
-
+  //Funcion encargada de cargar el socket al momento de cargar la pagina
   useEffect(() => {
+
+    //Se crea el socket por parte del cliente
     const socket = socketIOClient(ENDPOINT);
 
+    //Se trae el componente con Id "message"
     let message = document.getElementById('message');
-
-    // socket.on('chat:message', function (data){
     
-    //     output.innerHTML += `<p>
-    //         <strong>${data.username}</strong>: ${data.message} 
-    //      </p>`
-    //  });
-     
-     
+    //Envia el nombre con el que desea que se cree el room al que va a pertenecer
     socket.emit('name_room', props.idDoc);
 
-
+    //Al moemnto de que alguno de los usuarios en el room escriba se reflejara en mi componente "message"
      socket.on('chat:typing', function (data) {
      
        console.log(data);
@@ -38,35 +31,33 @@ function documento(props) {
        
      });
     
+     //Al moemnto de que YO escriba en el componente "message" se estara mandando a los usuarios del room
      message.addEventListener('keypress', function () {
         socket.emit('chat:typing', message.value);
     })
 
   }, []);
 
-
-
-  // Default export is a4 paper, portrait, using millimeters for units
+//Constante para crear un pdf llamando a la libreria jsPDF
   const doc = new jsPDF();
 
+  //Variables globales
   const [Cont, setCont] = useState(props.content);
   const [Inv, setInv] = useState("");
-  // console.log("prps de documento: ",props);
-  const {register, formState: { errors }, handleSubmit} = useForm();
-    // const element = <h1>Bienvenido</h1>;
-    // let message = document.getElementById('message');
 
+  //constantes que necesita el useform para validar
+  const {register, formState: { errors }, handleSubmit} = useForm();
+
+  //Funcion que escucha al componente texarea cada que escribe y lo guarda en la variable Cont, que será el contenido de nuestro documento
     const onSubmit = (data, e) => {
-        // console.log(data.target.value);
         setCont(data.target.value);
-        // console.log(Cont);
     }
+    //Funcion que escucha al componente input cada que escribe y lo guarda en la variable Inv, que sera el que enviaremos para agregar como invitado
     const onSubmit2 = (data, e) => {
-      // console.log(data.target.value);
       setInv(data.target.value);
-      // console.log(Cont);
   }
 
+    //funcion encargada de guardar los cambios hechos en el documento a traves de la ruta guardar_doc
     const guardar = (data, e) => {
 
       fetch("/docs/guardar_doc", {
@@ -83,16 +74,12 @@ function documento(props) {
       .then((res) => res.json())
       .then((data) => {
         console.log("se guardaron cambios");
-        // if(data.code==200){
-        //   render(<Principal/>, document.getElementById('Inicio'))
-        // }else{
-        //   render(element, document.getElementById('message_err'))
-        // }
       });
     }
 
+
+    //funcion encargada de agregar a los usuarios invitados al documento a traves de la ruta agregar_inv
     const agregar = (data, e) => {
-      
 
       fetch("/docs/agregar_inv", {
         method: "POST",
@@ -108,19 +95,16 @@ function documento(props) {
       .then((res) => res.json())
       .then((data) => {
         console.log("se agrego el invitado");
-        // if(data.code==200){
-        //   render(<Principal/>, document.getElementById('Inicio'))
-        // }else{
-        //   render(element, document.getElementById('message_err'))
-        // }
       });
     }
 
+    //funcion encargada de descargar el documento a traves de la libreria jsPDF
     const descargar_doc = (data, e) => {
       doc.text(Cont, 10, 10);
       doc.save(props.namedoc +".pdf");
     }
 
+    //funcion encargada de eliminar el documento a traves de la ruta delete_doc
     const eliminar_doc = (data, e) => {
       fetch(`/docs/delete_doc/${props.idDoc}`, {
         method: "DELETE",
@@ -137,6 +121,7 @@ function documento(props) {
         });
     }
 
+    //Funcion para regresar a la pantalla principal
     const regresar = (data, e) => {
       render(<Principal/>, document.getElementById('Inicio'))
     }
@@ -198,9 +183,6 @@ function documento(props) {
         </textarea>
     </div>
     </div>
-    {/* <script src="/socket.io/socket.io.js"></script>
-    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js" integrity="sha384-DkkWv9oJFWLIydBXXjkBWnG1/fuVhw8YPBq37uvvD6WSYRFRqr21eY5Dg9ZhmWdy"></script>
-    <script defer src="../../public/socket_conection.js"></script> */}
     </div>
   );
 }
