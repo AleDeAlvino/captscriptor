@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useForm } from 'react-hook-form';
 // import ReactDOM from 'react-dom'
 import logo from '../../public/logo.jpg';
-// import { render } from 'react-dom';
+import { render } from 'react-dom';
 // import Login from './Login';
 // import io from 'socket.io-client';
+import Principal from './Principal';
 import { jsPDF } from "jspdf";
 import socketIOClient from "socket.io-client";
 const ENDPOINT = ":3000";
@@ -121,11 +122,23 @@ function documento(props) {
     }
 
     const eliminar_doc = (data, e) => {
-      
+      fetch(`/docs/delete_doc/${props.idDoc}`, {
+        method: "DELETE",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          console.log("Dato eliminado");
+          render(<Principal/>, document.getElementById('Inicio'))
+        });
     }
 
     const regresar = (data, e) => {
-      
+      render(<Principal/>, document.getElementById('Inicio'))
     }
 
   return (
@@ -165,7 +178,7 @@ function documento(props) {
             <div className="eliminar">
             
                 <div >
-                <button className="eliminar_btn"> Eliminar documento</button>
+                <button className="eliminar_btn" onClick={eliminar_doc}> Eliminar documento</button>
                 </div>
             
             </div>
@@ -173,7 +186,7 @@ function documento(props) {
             <div className="regresar">
             
               <div >
-                <button className="regresar_btn"> Regresar</button>
+                <button className="regresar_btn" onClick={regresar}> Regresar</button>
               </div>
         
             </div>

@@ -89,7 +89,11 @@ router.get('/docs_user', async (req, res) => {
         res.json(documentos);
 });
 
+router.delete('/delete_doc/:id', async(req, res) => {
 
+    await Document.findByIdAndRemove(req.params.id);
+    res.json({status: 'Documento Eliminado'});
+});
 
 
 module.exports = router;

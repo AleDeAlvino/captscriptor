@@ -33,6 +33,9 @@ import {
           <Route exact path="/Principal">
             <Principal />
           </Route>
+          <Route exact path="/Inicio">
+            <Inicio />
+          </Route>
           <Route exact path="/">
             <Inicio />
           </Route>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Login from './Login';
 import logo from '../../public/logo.jpg';
+import edu from '../../public/edu.png';
 import { render } from 'react-dom';
 import {
   BrowserRouter as Router,
@@ -32,7 +33,7 @@ function Inicio () {
         <img className="logo" src={logo}/>
         </div>
         <div className="gatito">
-          {/* <img src="educacion.png" alt="educacion" className="educacion"/> */}
+          <img src={edu} className="educacion"/>
         </div>
           <div>
             <button className="inicio">Iniciar sesión</button>

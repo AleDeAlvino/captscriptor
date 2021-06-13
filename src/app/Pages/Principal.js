@@ -61,6 +61,9 @@ function Principal(props) {
           
         fetch("/docs/Logout", {
           method: "POST",
+          body: JSON.stringify({
+            hola: "hola",
+        }),
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
@@ -69,9 +72,8 @@ function Principal(props) {
         .then((res) => res.json())
         .then((data) => {
           console.log("Hecho")
-            render(<Inicio/>, document.getElementById('Inicio'));
         });
-          
+        render(<Login/>, document.getElementById('Inicio'));
       }
 
       const element = <div>
@@ -105,9 +107,7 @@ function Principal(props) {
         <div className='bold-line'></div>
         <div className="cabeza"> 
         <img src={logo} alt="logo" className="logo"/>
-        <form onClick={logoutC}>
-            <button className="cerrar" >Cerrar Sesion</button>
-        </form>
+            <button className="cerrar" onClick={logoutC}>Cerrar Sesion</button>
       </div>
         <div className="nuevodocu" onClick={nom_in_doc}></div>
         <div id="nom_input"></div>
