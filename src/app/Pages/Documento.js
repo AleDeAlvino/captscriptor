@@ -5,6 +5,7 @@ import logo from '../../public/logo.jpg';
 // import { render } from 'react-dom';
 // import Login from './Login';
 // import io from 'socket.io-client';
+import { jsPDF } from "jspdf";
 import socketIOClient from "socket.io-client";
 const ENDPOINT = ":3000";
 
@@ -42,6 +43,10 @@ function documento(props) {
 
   }, []);
 
+
+
+  // Default export is a4 paper, portrait, using millimeters for units
+  const doc = new jsPDF();
 
   const [Cont, setCont] = useState(props.content);
   const [Inv, setInv] = useState("");
@@ -110,6 +115,19 @@ function documento(props) {
       });
     }
 
+    const descargar_doc = (data, e) => {
+      doc.text(Cont, 10, 10);
+      doc.save(props.namedoc +".pdf");
+    }
+
+    const eliminar_doc = (data, e) => {
+      
+    }
+
+    const regresar = (data, e) => {
+      
+    }
+
   return (
     <div>
     <div className="cabeza">
@@ -117,8 +135,8 @@ function documento(props) {
             
             <div className="nom_doc">
             <form onSubmit={handleSubmit(guardar)}>
-                <div className="guardar_btn">
-                <button>Guardar cambios</button>
+                <div>
+                <button className="guardar_btn">Guardar cambios</button>
                 </div>
             </form>
             </div>
@@ -131,10 +149,35 @@ function documento(props) {
                         name="inv"
                         onChange={onSubmit2}
                     ></input>
-                    <div className="agregar_btn">
-                        <button onClick={agregar}>Agregar</button>
+                    <div>
+                        <button className="agregar_btn" onClick={agregar}>Agregar invitado</button>
                     </div>
             </div>
+
+            <div className="descargar">
+            
+                <div >
+                <button className="descargar_btn" onClick={descargar_doc}>Descargar documento</button>
+                </div>
+            
+            </div>
+
+            <div className="eliminar">
+            
+                <div >
+                <button className="eliminar_btn"> Eliminar documento</button>
+                </div>
+            
+            </div>
+
+            <div className="regresar">
+            
+              <div >
+                <button className="regresar_btn"> Regresar</button>
+              </div>
+        
+            </div>
+
     </div>
     <div className='container'>
     <div id="chat-container">

@@ -48,7 +48,7 @@ function Principal(props) {
         console.log("Hecho")
         console.log(data);
         console.log(data.doc._id);
-          render(<Documento idDoc ={data.doc._id}/>, document.getElementById('Inicio'))
+          render(<Documento idDoc ={data.doc._id} namedoc={data.namedoc}/>, document.getElementById('Inicio'))
       });
         
     }
@@ -85,8 +85,8 @@ function Principal(props) {
               required: true,
           })}
   ></input>
-  <div className="crear_btn">
-     <button>Crear nuevo documento</button>
+  <div >
+     <button className="crear_btn">Crear nuevo documento</button>
   </div>
   </form>
 </div>;
@@ -95,9 +95,9 @@ function Principal(props) {
         render(element, document.getElementById('nom_input'))
       }
       
-      function abrir (_id, content){
+      function abrir (_id, content, namedoc){
         // console.log(data);
-          render(<Documento idDoc ={_id} content={content}/>, document.getElementById('Inicio'))
+          render(<Documento idDoc ={_id} content={content} namedoc={namedoc}/>, document.getElementById('Inicio'))
       };
   
     return (
@@ -116,7 +116,7 @@ function Principal(props) {
         {docs.map((datos) => {
                     return (
                         <div className="cua_all">
-                          <div className="nuevodocu2" onClick={() =>{abrir(datos._id, datos.content)}}></div>
+                          <div className="nuevodocu2" onClick={() =>{abrir(datos._id, datos.content, datos.namedoc)}}></div>
                           
                           <p className="ndoc">{datos.namedoc}</p>
                         </div>

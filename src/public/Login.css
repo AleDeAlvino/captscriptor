@@ -577,27 +577,38 @@ button:focus {
 
 .nom_doc {
   position: relative;
-  float: left;
-  margin-top: 1%;
-  margin-left: 25%;
+  float:left;
+  margin-top: 0.5%;
+  margin-left:13%;
   width: 15%;
 }
 
 .agregar{
   position: relative;
-  float: left;
-  margin-top: 1%;
-  left: 10%;
+  float:left;
+  margin-top: 0.5%;
+  margin-left:1%;
   width: 15%;
 }
 
 .guardar_btn{
-  position: relative;
-  float: right;
+  background-color: #D3C6E4;
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 13px 20px;
+  text-align: center;
+  font-size: 16px; 
+  border-radius: 5px;
 }
+
 .agregar_btn{
-  position: relative;
-  float: right;
+  background-color: #CAB8DE;
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 3px 9px;
+  text-align: center;
+  font-size: 16px; 
+  border-radius: 5px;
 }
 
 .nuevodocu{
@@ -634,7 +645,16 @@ transform: scale(1.1);
 .crear_btn{
   position: relative;
   float: center;
-  margin-top: 2%;
+  margin-top: 5%;
+  background-color: #A074C4;
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px; 
+  border-radius: 5px;
+
 }
 
 .cua_all{
@@ -646,8 +666,18 @@ transform: scale(1.1);
 }
 
 .cerrar{
+  margin-top: 0.5%;
+  margin-right: 2%;
+  background-color: #A074C4;
   position: relative;
   float: right;
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px; 
+  border-radius: 5px;
 }
 
 .texto{
@@ -697,4 +727,58 @@ position: absolute;
   cursor: pointer;
   font-size: 20px;
   font-family: 'Trebuchet MS';
+}
+
+.descargar {
+  position: relative;
+  float:left;
+  margin-top: 0.5%;
+  margin-left:1%;
+  width: 15%;
+}
+
+.descargar_btn{
+  background-color: #C2ABD7;
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 13px 20px;
+  text-align: center;
+  font-size: 16px; 
+  border-radius: 5px;
+}
+
+.eliminar {
+  position: relative;
+  float:left;
+  margin-top: 0.5%;
+  margin-left:0.5%;
+  width: 15%;
+}
+
+.eliminar_btn{
+  background-color: #BA9CD0;
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 13px 20px;
+  text-align: center;
+  font-size: 16px; 
+  border-radius: 5px;
+}
+
+.regresar {
+  position: relative;
+  float:left;
+  margin-top: 0.5%;
+  margin-left:-1%;
+  width: 15%;
+}
+
+.regresar_btn{
+  background-color: #79559B;
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 13px 20px;
+  text-align: center;
+  font-size: 16px; 
+  border-radius: 5px;
 }
